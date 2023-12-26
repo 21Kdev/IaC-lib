@@ -19,6 +19,6 @@ echo "Installing NVIDIA Docker..."
 ./install_nvidia_docker.sh
 
 echo "Installing Docker Compose..."
-./isntall_docker_compose.sh
+./install_docker_compose.sh
 
 echo "All installations complete!"
