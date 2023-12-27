@@ -7,18 +7,18 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 echo "Installing NVIDIA driver..."
-../common/install_nvidia.sh
+sh ../common/install_nvidia.sh
 
 echo "Installing Docker..."
-./install_docker.sh
+sh ./install_docker.sh
 
 echo "Adding Docker permissions..."
-./add_docker_permission.sh
+sh ./add_docker_permission.sh
 
 echo "Installing NVIDIA Docker..."
-./install_nvidia_docker.sh
+sh ./install_nvidia_docker.sh
 
 echo "Installing Docker Compose..."
-./install_docker_compose.sh
+sh ./install_docker_compose.sh
 
 echo "All installations complete!"
