@@ -12,6 +12,9 @@ sh ../common/install_nvidia.sh
 echo "Installing k8s..."
 sh ./install_k8s.sh
 
+echo "Installing helm..."
+sh ./install_helm.sh
+
 echo "Installing containerd_nvidia..."
 sh ./containerd_nvidia.sh
 
