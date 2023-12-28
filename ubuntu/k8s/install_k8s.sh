@@ -120,9 +120,11 @@ cp -i /etc/kubernetes/admin.conf $USER_HOME/.kube/config
 chown "$USER_ID":"$USER_GID" $USER_HOME/.kube/config
 
 ## kubeconfig for root (temp)
-mkdir -p /root/.kube
-cp -i /etc/kubernetes/admin.conf /root/.kube/config
-chown $(id -u):$(id -g) /root/.kube/config
+if [ -n "$SUDO_USER" ]; then
+    mkdir -p /root/.kube
+    cp -i /etc/kubernetes/admin.conf /root/.kube/config
+    chown $(id -u):$(id -g) /root/.kube/config
+fi
 
 # deploy flannel
 kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
@@ -137,4 +139,6 @@ echo 'complete -o default -F __start_kubectl k' >> "$USER_BASHRC"
 kubectl taint nodes "$(hostname)" node-role.kubernetes.io/control-plane:NoSchedule-
 
 ## remove temp root config
-rm -r /root/.kube
+if [ -n "$SUDO_USER" ]; then
+    rm -r /root/.kube
+fi

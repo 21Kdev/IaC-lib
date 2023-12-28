@@ -6,6 +6,8 @@ if [ "$(id -u)" -ne 0 ]; then
   exit
 fi
 
+cd "$(dirname "$0")"
+
 echo "Installing NVIDIA driver..."
 sh ../common/install_nvidia.sh
 
