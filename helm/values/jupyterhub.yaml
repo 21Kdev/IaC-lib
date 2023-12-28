@@ -1,0 +1,2 @@
+proxy.service.public.type: NodePort
+proxy.service.public.nodePorts.http: 31000
