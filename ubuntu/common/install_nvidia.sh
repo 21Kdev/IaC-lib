@@ -12,7 +12,9 @@ apt update && apt-get install -y ca-certificates \
     software-properties-common \
     apt-transport-https \
     gnupg \
-    lsb-release
+    lsb-release \
+    alsa-utils \
+    ubuntu-drivers-common
 
 ubuntu-drivers install nvidia:525-server
 
