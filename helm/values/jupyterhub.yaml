@@ -331,10 +331,10 @@ hub:
   ##
   resources:
     limits:
-      cpu: 2
+      cpu: '2'
       memory: '2G'
     requests:
-      cpu: 1
+      cpu: '1'
       memory: '1G'
     # limits: {}
     # requests: {}
@@ -1498,10 +1498,10 @@ singleuser:
   ##
   resources:
     limits:
-      cpu: 2
+      cpu: '2'
       memory: '2G'
     requests:
-      cpu: 1
+      cpu: '1'
       memory: '1G'
   ## singleuser containers' Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
