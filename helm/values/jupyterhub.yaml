@@ -17,7 +17,7 @@ global:
   ##   - myRegistryKeySecretName
   ##
   imagePullSecrets: []
-  storageClass: ""
+  storageClass: "local-path"
 
 ## @section Common parameters
 ##
@@ -217,7 +217,7 @@ hub:
         digest: {{ .Values.singleuser.image.digest }}
         pullPolicy: {{ .Values.singleuser.image.pullPolicy }}
         pullSecrets: {{- include "jupyterhub.imagePullSecrets.list" . | nindent 8 }}
-      startTimeout: 1200
+      startTimeout: 300
       {{- /* We need to replace the Kubernetes memory/cpu terminology (e.g. 10Gi, 10Mi) with one compatible with Python (10G, 10M) */}}
       cpu:
         limit: {{ regexReplaceAll "([A-Za-z])i" (default "" .Values.singleuser.resources.limits.cpu)  "${1}" }}
@@ -550,7 +550,7 @@ hub:
     ## NOTE: choose port between <30000-32767>
     ##
     nodePorts:
-      http: "31000"
+      http: ""
     ## @param hub.service.sessionAffinity Control where client requests go, to the same pod or round-robin
     ## Values: ClientIP or None
     ## ref: https://kubernetes.io/docs/user-guide/services/
@@ -1524,7 +1524,7 @@ singleuser:
   podSecurityContext:
     enabled: true
     fsGroup: 1001
-    
+
   ## @param singleuser.podLabels Extra labels for Single User pods
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
@@ -1618,7 +1618,7 @@ singleuser:
       - ReadWriteOnce
     ## @param singleuser.persistence.size Persistent Volumes size
     ##
-    size: 10Gi
+    size: 30Gi
 
   ## @param singleuser.profileList  Define JupyterHub profiles
   profileList: []
