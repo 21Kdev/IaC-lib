@@ -284,7 +284,7 @@ hub:
     enabled: true
     initialDelaySeconds: 10
     periodSeconds: 10
-    failureThreshold: 30
+    failureThreshold: 90
     timeoutSeconds: 3
     successThreshold: 1
   ## @param hub.livenessProbe.enabled Enable livenessProbe on Hub containers
@@ -298,7 +298,7 @@ hub:
     enabled: true
     initialDelaySeconds: 10
     periodSeconds: 10
-    failureThreshold: 30
+    failureThreshold: 90
     timeoutSeconds: 3
     successThreshold: 1
   ## @param hub.readinessProbe.enabled Enable readinessProbe on Hub containers
@@ -312,7 +312,7 @@ hub:
     enabled: true
     initialDelaySeconds: 10
     periodSeconds: 10
-    failureThreshold: 30
+    failureThreshold: 90
     timeoutSeconds: 3
     successThreshold: 1
   ## @param hub.customStartupProbe Override default startup probe
@@ -557,14 +557,11 @@ hub:
     ##
     sessionAffinity: None
     ## @param hub.service.sessionAffinityConfig Additional settings for the sessionAffinity
-    sessionAffinityConfig:
-      clientIP:
-        timeoutSeconds: 900
-    # ## sessionAffinityConfig:
-    # ##   clientIP:
-    # ##     timeoutSeconds: 300
-    # ##
-    # sessionAffinityConfig: {}
+    ## sessionAffinityConfig:
+    ##   clientIP:
+    ##     timeoutSeconds: 300
+    ##
+    sessionAffinityConfig: {}
     ## @param hub.service.clusterIP Hub service Cluster IP
     ## e.g.:
     ## clusterIP: None
@@ -716,7 +713,7 @@ proxy:
     enabled: true
     initialDelaySeconds: 10
     periodSeconds: 10
-    failureThreshold: 30
+    failureThreshold: 300
     timeoutSeconds: 3
     successThreshold: 1
   ## @param proxy.livenessProbe.enabled Enable livenessProbe on Proxy containers
@@ -730,7 +727,7 @@ proxy:
     enabled: true
     initialDelaySeconds: 10
     periodSeconds: 10
-    failureThreshold: 30
+    failureThreshold: 300
     timeoutSeconds: 3
     successThreshold: 1
   ## @param proxy.readinessProbe.enabled Enable readinessProbe on Proxy containers
@@ -744,7 +741,7 @@ proxy:
     enabled: true
     initialDelaySeconds: 10
     periodSeconds: 10
-    failureThreshold: 30
+    failureThreshold: 300
     timeoutSeconds: 3
     successThreshold: 1
   ## @param proxy.customStartupProbe Override default startup probe
