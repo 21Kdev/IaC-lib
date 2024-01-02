@@ -112,8 +112,6 @@ hub:
     hub:
       config:
         JupyterHub:
-          ip: 0.0.0.0
-          hub_ip: 0.0.0.0
           admin_access: true
           authenticator_class: dummy
           DummyAuthenticator:
@@ -255,7 +253,7 @@ hub:
   command: []
   ## @param hub.args Override Hub default args
   ##
-  args: []
+  args: ['--allow-root']
   ## @param hub.extraEnvVars Add extra environment variables to the Hub container
   ## Example:
   ## extraEnvVars:
