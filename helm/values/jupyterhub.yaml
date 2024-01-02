@@ -253,7 +253,7 @@ hub:
   command: []
   ## @param hub.args Override Hub default args
   ##
-  args: ['--allow-root']
+  args: []
   ## @param hub.extraEnvVars Add extra environment variables to the Hub container
   ## Example:
   ## extraEnvVars:
