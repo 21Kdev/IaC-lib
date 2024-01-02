@@ -361,7 +361,7 @@ hub:
   ##
   podSecurityContext:
     enabled: true
-    fsGroup: 1001
+    fsGroup: 1000
   ## @param hub.lifecycleHooks LifecycleHooks for the Hub container to automate configuration before or after startup
   ##
   lifecycleHooks: {}
