@@ -1452,7 +1452,7 @@ singleuser:
   image:
     registry: docker.io
     repository: bitnami/jupyter-base-notebook
-    tag: 4.0.2-debian-11-r69
+    tag: 4.0.2-debian-11-r66
     digest: ""
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -1504,25 +1504,44 @@ singleuser:
   ## @param singleuser.containerSecurityContext.capabilities.drop List of capabilities to be dropped
   ## @param singleuser.containerSecurityContext.seccompProfile.type Set container's Security Context seccomp profile
   ##
+  ##########################
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
-    runAsNonRoot: true
-    privileged: false
-    readOnlyRootFilesystem: false
-    allowPrivilegeEscalation: false
-    capabilities:
-      drop: ["ALL"]
-    seccompProfile:
-      type: "RuntimeDefault"
-  ## singleuser pods' Security Context
-  ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
-  ## @param singleuser.podSecurityContext.enabled Enabled Single User pods' Security Context
-  ## @param singleuser.podSecurityContext.fsGroup Set Single User pod's Security Context fsGroup
-  ##
+    # runAsUser: 1001
+    runAsNonRoot: false
+    privileged: true
+    # readOnlyRootFilesystem: false
+    allowPrivilegeEscalation: true
+  # capabilities:
+  #   drop: ["ALL"]
+  seccompProfile:
+    type: "RuntimeDefault"
+
   podSecurityContext:
     enabled: true
-    fsGroup: 1001
+    # fsGroup: 1001
+
+  ##########################
+  # containerSecurityContext:
+  #   enabled: true
+  #   runAsUser: 1001
+  #   runAsNonRoot: true
+  #   privileged: false
+  #   readOnlyRootFilesystem: false
+  #   allowPrivilegeEscalation: false
+  #   capabilities:
+  #     drop: ["ALL"]
+  #   seccompProfile:
+  #     type: "RuntimeDefault"
+  # ## singleuser pods' Security Context
+  # ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod
+  # ## @param singleuser.podSecurityContext.enabled Enabled Single User pods' Security Context
+  # ## @param singleuser.podSecurityContext.fsGroup Set Single User pod's Security Context fsGroup
+  # ##
+  # podSecurityContext:
+  #   enabled: true
+  #   fsGroup: 1001
+  ############################
   ## @param singleuser.podLabels Extra labels for Single User pods
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
