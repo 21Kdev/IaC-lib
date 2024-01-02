@@ -217,7 +217,7 @@ hub:
         digest: {{ .Values.singleuser.image.digest }}
         pullPolicy: {{ .Values.singleuser.image.pullPolicy }}
         pullSecrets: {{- include "jupyterhub.imagePullSecrets.list" . | nindent 8 }}
-      startTimeout: 300
+      startTimeout: 1200
       {{- /* We need to replace the Kubernetes memory/cpu terminology (e.g. 10Gi, 10Mi) with one compatible with Python (10G, 10M) */}}
       cpu:
         limit: {{ regexReplaceAll "([A-Za-z])i" (default "" .Values.singleuser.resources.limits.cpu)  "${1}" }}
