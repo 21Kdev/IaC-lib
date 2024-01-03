@@ -228,7 +228,7 @@ hub:
       {{- if .Values.singleuser.command }}
       cmd: {{- include "common.tplvalues.render" (dict "value" .Values.singleuser.command "context" $) | nindent 12 }}
       {{- else }}
-      cmd: jupyterhub-singleuser
+      cmd: jupyterhub-singleuser --ip=0.0.0.0
       {{- end }}
       defaultUrl:
       {{- if .Values.singleuser.profileList }}
