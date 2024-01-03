@@ -671,7 +671,7 @@ proxy:
     debug: false
   ## @param proxy.secretToken Proxy secret token (used for communication with the Hub)
   ##
-  secretToken: ""
+  secretToken: "a57f6fd2deebb45967155773b40610196784e91be27266749175514cdd1ebc1f"
   ## @param proxy.command Override Proxy default command
   ##
   command: []
