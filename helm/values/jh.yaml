@@ -1059,7 +1059,7 @@ proxy:
     public:
       ## @param proxy.service.public.type Public service type
       ##
-      type: LoadBalancer
+      type: NodePort
       # HTTP Port
       ## @param proxy.service.public.ports.http Public service HTTP port
       ##
@@ -1069,7 +1069,7 @@ proxy:
       ## NOTE: choose port between <30000-32767>
       ##
       nodePorts:
-        http: ""
+        http: "31000"
       ## @param proxy.service.public.sessionAffinity Control where client requests go, to the same pod or round-robin
       ## Values: ClientIP or None
       ## ref: https://kubernetes.io/docs/user-guide/services/
