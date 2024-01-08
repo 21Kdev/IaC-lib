@@ -138,8 +138,6 @@ hub:
       {{- end }}
       redirectToServer:
       shutdownOnLogout:
-      http_timeout: 600
-      debug: true
     singleuser:
       podNameTemplate: {{ include "common.names.fullname" . }}-jupyter-{username}
       {{- if .Values.singleuser.tolerations }}
@@ -219,9 +217,8 @@ hub:
         digest: {{ .Values.singleuser.image.digest }}
         pullPolicy: {{ .Values.singleuser.image.pullPolicy }}
         pullSecrets: {{- include "jupyterhub.imagePullSecrets.list" . | nindent 8 }}
-      startTimeout: 600
+      startTimeout: 300
       http_timeout: 600
-      debug: true
       {{- /* We need to replace the Kubernetes memory/cpu terminology (e.g. 10Gi, 10Mi) with one compatible with Python (10G, 10M) */}}
       cpu:
         limit: {{ regexReplaceAll "([A-Za-z])i" (default "" .Values.singleuser.resources.limits.cpu)  "${1}" }}
