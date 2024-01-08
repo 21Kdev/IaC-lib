@@ -253,19 +253,24 @@ hub:
   command: []
   ## @param hub.args Override Hub default args
   ##
-  args: []
+  # args: []
+  args:
+  - name: http_timeout
+    value: "300"
+  - name: httpTimeout
+    value: "300"
   ## @param hub.extraEnvVars Add extra environment variables to the Hub container
   ## Example:
   ## extraEnvVars:
   ##   - name: FOO
   ##     value: "bar"
   ##
-  # extraEnvVars: []
-  extraEnvVars:
-  - name: http_timeout
-    value: "300"
-  - name: httpTimeout
-    value: "300"
+  extraEnvVars: []
+  # extraEnvVars:
+  # - name: http_timeout
+  #   value: "300"
+  # - name: httpTimeout
+  #   value: "300"
   ## @param hub.extraEnvVarsCM Name of existing ConfigMap containing extra env vars
   ##
   extraEnvVarsCM: ""
