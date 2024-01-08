@@ -347,7 +347,7 @@ hub:
   containerSecurityContext:
     enabled: true
     runAsUser: 1001
-    runAsNonRoot: false
+    runAsNonRoot: true
     privileged: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: false
@@ -776,7 +776,7 @@ proxy:
   containerSecurityContext:
     enabled: true
     runAsUser: 1001
-    runAsNonRoot: false
+    runAsNonRoot: true
     privileged: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: false
@@ -1313,7 +1313,7 @@ imagePuller:
   containerSecurityContext:
     enabled: true
     runAsUser: 1001
-    runAsNonRoot: false
+    runAsNonRoot: true
     privileged: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: false
@@ -1507,8 +1507,8 @@ singleuser:
   ##
   containerSecurityContext:
     enabled: true
-    runAsUser: 0
-    runAsNonRoot: false
+    runAsUser: 1001
+    runAsNonRoot: true
     privileged: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: false
