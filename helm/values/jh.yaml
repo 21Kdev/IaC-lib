@@ -112,8 +112,6 @@ hub:
     hub:
       config:
         JupyterHub:
-          http_timeout: 300
-          httpTimeout: 300
           admin_access: true
           authenticator_class: dummy
           DummyAuthenticator:
@@ -129,8 +127,6 @@ hub:
       concurrentSpawnLimit: 64
       consecutiveFailureLimit: 5
       activeServerLimit:
-      http_timeout: 300
-      httpTimeout: 300
       db:
         type: postgres
         url: postgresql://{{ ternary .Values.postgresql.auth.username .Values.externalDatabase.user .Values.postgresql.enabled }}@{{ ternary (include "jupyterhub.postgresql.fullname" .) .Values.externalDatabase.host .Values.postgresql.enabled }}:{{ ternary "5432" .Values.externalDatabase.port .Values.postgresql.enabled }}/{{ ternary .Values.postgresql.auth.database .Values.externalDatabase.database .Values.postgresql.enabled }}
@@ -257,14 +253,20 @@ hub:
   command: []
   ## @param hub.args Override Hub default args
   ##
-  args: []
+  # args: []
+  args:
+  - http_timeout: 300
+  - httpTimeout: 300
   ## @param hub.extraEnvVars Add extra environment variables to the Hub container
   ## Example:
   ## extraEnvVars:
   ##   - name: FOO
   ##     value: "bar"
   ##
-  extraEnvVars: []
+  # extraEnvVars: []
+  extraEnvVars:
+  - http_timeout: 300
+  - httpTimeout: 300
   ## @param hub.extraEnvVarsCM Name of existing ConfigMap containing extra env vars
   ##
   extraEnvVarsCM: ""
