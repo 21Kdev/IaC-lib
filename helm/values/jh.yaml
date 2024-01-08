@@ -263,9 +263,9 @@ hub:
   # extraEnvVars: []
   extraEnvVars:
   - name: http_timeout
-    value: 300
+    value: "300"
   - name: httpTimeout
-    value: 300
+    value: "300"
   ## @param hub.extraEnvVarsCM Name of existing ConfigMap containing extra env vars
   ##
   extraEnvVarsCM: ""
