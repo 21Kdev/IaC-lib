@@ -346,8 +346,8 @@ hub:
   ##
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
-    runAsNonRoot: true
+    runAsUser: 0
+    runAsNonRoot: false
     privileged: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: false
@@ -362,7 +362,7 @@ hub:
   ##
   podSecurityContext:
     enabled: true
-    fsGroup: 1001
+    fsGroup: 0
   ## @param hub.lifecycleHooks LifecycleHooks for the Hub container to automate configuration before or after startup
   ##
   lifecycleHooks: {}
@@ -775,8 +775,8 @@ proxy:
   ##
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
-    runAsNonRoot: true
+    runAsUser: 0
+    runAsNonRoot: false
     privileged: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: false
@@ -791,7 +791,7 @@ proxy:
   ##
   podSecurityContext:
     enabled: true
-    fsGroup: 1001
+    fsGroup: 0
   ## @param proxy.lifecycleHooks Add lifecycle hooks to the Proxy deployment
   ##
   lifecycleHooks: {}
@@ -1312,8 +1312,8 @@ imagePuller:
   ##
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
-    runAsNonRoot: true
+    runAsUser: 0
+    runAsNonRoot: false
     privileged: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: false
@@ -1328,7 +1328,7 @@ imagePuller:
   ##
   podSecurityContext:
     enabled: true
-    fsGroup: 1001
+    fsGroup: 0
   ## @param imagePuller.lifecycleHooks Add lifecycle hooks to the ImagePuller deployment
   ##
   lifecycleHooks: {}
