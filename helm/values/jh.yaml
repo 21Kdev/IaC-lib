@@ -139,6 +139,7 @@ hub:
       redirectToServer:
       shutdownOnLogout:
       debug: true
+      httpTimeout: 600
     singleuser:
       podNameTemplate: {{ include "common.names.fullname" . }}-jupyter-{username}
       {{- if .Values.singleuser.tolerations }}
