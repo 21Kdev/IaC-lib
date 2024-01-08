@@ -1507,7 +1507,7 @@ singleuser:
   ##
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
+    runAsUser: 0
     runAsNonRoot: false
     privileged: false
     readOnlyRootFilesystem: false
