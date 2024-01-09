@@ -1492,7 +1492,8 @@ singleuser:
   ##
   resources:
     limits: {}
-    requests: {}
+    requests:
+      gpu: 2
   ## singleuser containers' Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
   ## @param singleuser.containerSecurityContext.enabled Enabled containers' Security Context
