@@ -1620,7 +1620,11 @@ singleuser:
     size: 200Gi
 
   ## @param singleuser.profileList  Define JupyterHub profiles
-  profileList: []
+  profileList:
+  - display_name: "Profile 1"
+    description: "Longer description for profile 1."
+    kubespawner_override:
+      image: jupyter/tensorflow-notebook:latest
     ## - display_name: "Profile 1"
     ##   description: "Longer description for profile 1."
     ##   default: true
