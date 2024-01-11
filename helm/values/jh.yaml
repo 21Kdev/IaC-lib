@@ -1621,7 +1621,7 @@ singleuser:
       - ReadWriteOnce
     ## @param singleuser.persistence.size Persistent Volumes size
     ##
-    size: 170Gi
+    size: 150Gi
 
   ## @param singleuser.profileList  Define JupyterHub profiles
   profileList: []
