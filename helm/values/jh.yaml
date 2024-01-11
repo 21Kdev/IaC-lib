@@ -225,6 +225,7 @@ hub:
       memory:
         limit: {{ regexReplaceAll "([A-Za-z])i" (default "" .Values.singleuser.resources.limits.memory) "${1}" }}
         guarantee: {{ regexReplaceAll "([A-Za-z])i" (default "" .Values.singleuser.resources.requests.memory) "${1}" }}
+      nvidia.com/gpu: "2"
       {{- if .Values.singleuser.command }}
       cmd: {{- include "common.tplvalues.render" (dict "value" .Values.singleuser.command "context" $) | nindent 12 }}
       {{- else }}
@@ -1496,10 +1497,7 @@ singleuser:
   ##
   resources:
     limits: {}
-    requests:
-      cpu: '4'
-      memory: '16G'
-      gpu: '2'
+    requests: {}
   ## singleuser containers' Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
   ## @param singleuser.containerSecurityContext.enabled Enabled containers' Security Context
