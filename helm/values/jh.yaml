@@ -1510,7 +1510,7 @@ singleuser:
   ##
   containerSecurityContext:
     enabled: true
-    runAsUser: root
+    runAsUser: 0
     runAsNonRoot: false
     privileged: false
     readOnlyRootFilesystem: false
