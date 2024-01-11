@@ -1472,7 +1472,8 @@ singleuser:
     pullSecrets: []
   ## @param singleuser.notebookDir Notebook directory (it will be the same as the PVC volume mount)
   ##
-  notebookDir: /opt/bitnami/jupyterhub-singleuser
+  # notebookDir: /opt/bitnami/jupyterhub-singleuser
+  notebookDir: /workspace
   ## @param singleuser.allowPrivilegeEscalation Controls whether a process can gain more privileges than its parent process
   ##
   allowPrivilegeEscalation: false
@@ -1509,8 +1510,8 @@ singleuser:
   ##
   containerSecurityContext:
     enabled: true
-    runAsUser: 1001
-    runAsNonRoot: true
+    runAsUser: root
+    runAsNonRoot: false
     privileged: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: false
@@ -1525,7 +1526,7 @@ singleuser:
   ##
   podSecurityContext:
     enabled: true
-    fsGroup: 1001
+    fsGroup: 0
   ## @param singleuser.podLabels Extra labels for Single User pods
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
