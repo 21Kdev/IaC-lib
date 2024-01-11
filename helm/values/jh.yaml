@@ -1495,12 +1495,11 @@ singleuser:
   ## @param singleuser.resources.requests The requested resources for the Singleuser containers
   ##
   resources:
-    limits:
-      nvidia.com/gpu: 2
+    limits: {}
     requests:
-      cpu: 6
+      cpu: '6'
       memory: '16GB'
-      nvidia.com/gpu: 2
+      gpu: '2'
   ## singleuser containers' Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
   ## @param singleuser.containerSecurityContext.enabled Enabled containers' Security Context
