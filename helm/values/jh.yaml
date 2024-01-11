@@ -260,7 +260,12 @@ hub:
   ##   - name: FOO
   ##     value: "bar"
   ##
-  extraEnvVars: []
+  # extraEnvVars: []
+  extraEnvVars:
+    - name: NVIDIA_VISIBLE_DEVICES
+      value: all
+    - name: NVIDIA_DRIVER_CAPABILITIES
+      value: compute,utility
   ## @param hub.extraEnvVarsCM Name of existing ConfigMap containing extra env vars
   ##
   extraEnvVarsCM: ""
