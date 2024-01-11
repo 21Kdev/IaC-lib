@@ -225,7 +225,9 @@ hub:
       memory:
         limit: {{ regexReplaceAll "([A-Za-z])i" (default "" .Values.singleuser.resources.limits.memory) "${1}" }}
         guarantee: {{ regexReplaceAll "([A-Za-z])i" (default "" .Values.singleuser.resources.requests.memory) "${1}" }}
-      nvidia.com/gpu: "2"
+      nvidia.com/gpu: 
+        limit: "2"
+        guarantee: "2"
       {{- if .Values.singleuser.command }}
       cmd: {{- include "common.tplvalues.render" (dict "value" .Values.singleuser.command "context" $) | nindent 12 }}
       {{- else }}
