@@ -1452,7 +1452,7 @@ singleuser:
   image:
     registry: docker.io
     repository: dodo133/jupyter-img
-    tag: latest
+    tag: torch-maic2023
     # repository: bitnami/jupyter-base-notebook
     # tag: 4.0.2-debian-11-r66
     digest: ""
