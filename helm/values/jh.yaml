@@ -1515,7 +1515,7 @@ singleuser:
     runAsNonRoot: true
     privileged: false
     readOnlyRootFilesystem: false
-    allowPrivilegeEscalation: true
+    allowPrivilegeEscalation: false
     capabilities:
       drop: ["ALL"]
     seccompProfile:
