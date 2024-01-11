@@ -1510,8 +1510,8 @@ singleuser:
   ##
   containerSecurityContext:
     enabled: true
-    runAsUser: 0
-    runAsNonRoot: false
+    runAsUser: 1001
+    runAsNonRoot: true
     privileged: false
     readOnlyRootFilesystem: false
     allowPrivilegeEscalation: false
@@ -1526,7 +1526,7 @@ singleuser:
   ##
   podSecurityContext:
     enabled: true
-    fsGroup: 0
+    fsGroup: 1001
   ## @param singleuser.podLabels Extra labels for Single User pods
   ## ref: https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/
   ##
