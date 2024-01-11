@@ -1498,7 +1498,7 @@ singleuser:
     limits: {}
     requests:
       cpu: '6'
-      memory: '16GB'
+      memory: '16G'
       gpu: '2'
   ## singleuser containers' Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
