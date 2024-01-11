@@ -260,12 +260,7 @@ hub:
   ##   - name: FOO
   ##     value: "bar"
   ##
-  # extraEnvVars: []
-  extraEnvVars:
-    - name: NVIDIA_VISIBLE_DEVICES
-      value: all
-    - name: NVIDIA_DRIVER_CAPABILITIES
-      value: compute,utility
+  extraEnvVars: []
   ## @param hub.extraEnvVarsCM Name of existing ConfigMap containing extra env vars
   ##
   extraEnvVarsCM: ""
@@ -1503,6 +1498,8 @@ singleuser:
     limits:
       nvidia.com/gpu: 2
     requests:
+      cpu: 6
+      memory: 16GB
       nvidia.com/gpu: 2
   ## singleuser containers' Security Context
   ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-container
