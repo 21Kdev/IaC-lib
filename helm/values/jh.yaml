@@ -225,9 +225,6 @@ hub:
       memory:
         limit: {{ regexReplaceAll "([A-Za-z])i" (default "" .Values.singleuser.resources.limits.memory) "${1}" }}
         guarantee: {{ regexReplaceAll "([A-Za-z])i" (default "" .Values.singleuser.resources.requests.memory) "${1}" }}
-      nvidia.com/gpu: 
-        limit: "2"
-        guarantee: "2"
       {{- if .Values.singleuser.command }}
       cmd: {{- include "common.tplvalues.render" (dict "value" .Values.singleuser.command "context" $) | nindent 12 }}
       {{- else }}
@@ -1626,10 +1623,14 @@ singleuser:
     size: 150Gi
 
   ## @param singleuser.profileList  Define JupyterHub profiles
-  profileList: []
-    ## - display_name: "Profile 1"
-    ##   description: "Longer description for profile 1."
-    ##   default: true
+  # profileList: []
+  profileList:
+    - display_name: "Profile 1"
+      description: "Longer description for profile 1."
+      default: true
+      kubespawner_override:
+        extra_resource_limits: 
+          nvidia.com/gpu: 2
     ## - display_name: "Profile 2"
     ##   description: "Longer description for profile 2."
     ##   kubespawner_override:
