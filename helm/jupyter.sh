@@ -31,3 +31,5 @@ wget -P /tmp/ https://repo.anaconda.com/miniconda/Miniconda3-py38_4.12.0-Linux-x
 bash /tmp/Miniconda3-py38_4.12.0-Linux-x86_64.s -b -p /opt/bitnami/conda/
 export PATH=/opt/bitnami/conda/bin:$PATH
 echo "export PATH=/opt/bitnami/conda/bin:$PATH" >> ~/.bashrc
+
+# helm install maic bitnami/jupyterhub --create-namespace -n jupyterhub -f ./jh.yaml

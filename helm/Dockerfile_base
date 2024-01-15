@@ -1,0 +1,19 @@
+FROM bitnami/jupyter-base-notebook:4.0.2-debian-11-r66
+
+# Switch to root user for initial setup
+USER root
+
+# Install necessary system packages
+RUN apt update && \
+    apt install -y wget vim bzip2 build-essential python3-dev
+
+# Continue with your previous installations as root
+WORKDIR /home/maic-player/workspace
+
+RUN export CONDA_ALWAYS_YES="true"
+RUN conda install -c conda-forge ipykernel
+
+USER 1001
+
+# Cleanup and settings
+RUN unset CONDA_ALWAYS_YES

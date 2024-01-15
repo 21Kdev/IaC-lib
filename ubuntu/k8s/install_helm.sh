@@ -6,3 +6,4 @@ chmod 700 get_helm.sh
 rm ./get_helm.sh
 
 helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
