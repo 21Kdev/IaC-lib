@@ -1,4 +1,9 @@
 apiVersion: v1
+kind: namespace
+metadata:
+  name: jupyterhub
+---
+apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: shared-data-pvc
