@@ -91,7 +91,7 @@ hub:
   baseUrl: /
   ## @param hub.adminUser Hub Dummy authenticator admin user
   ##
-  adminUser: user
+  adminUser: admin
   ## @param hub.password Hub Dummy authenticator password
   ##
   password: "0000"
@@ -123,6 +123,9 @@ hub:
           Authenticator:
             admin_users:
               - {{ .Values.hub.adminUser }}
+            whitelist:
+              - "user1"
+              - "user2"
       cookieSecret:
       concurrentSpawnLimit: 64
       consecutiveFailureLimit: 5
@@ -1474,7 +1477,7 @@ singleuser:
   ## @param singleuser.notebookDir Notebook directory (it will be the same as the PVC volume mount)
   ##
   # notebookDir: /opt/bitnami/jupyterhub-singleuser
-  notebookDir: /workspace
+  notebookDir: /home/maic-player/workspace
   ## @param singleuser.allowPrivilegeEscalation Controls whether a process can gain more privileges than its parent process
   ##
   allowPrivilegeEscalation: false
@@ -1552,10 +1555,18 @@ singleuser:
   lifecycleHooks: {}
   ## @param singleuser.extraVolumes Optionally specify extra list of additional volumes for Single User pods
   ##
-  extraVolumes: []
+  # extraVolumes: []
+  extraVolumes:
+    - name: shared-data
+      persistentVolumeClaim:
+        claimName: shared-data-pvc
   ## @param singleuser.extraVolumeMounts Optionally specify extra list of additional volumeMounts for Single User container(s)
   ##
-  extraVolumeMounts: []
+  # extraVolumeMounts: []
+  extraVolumeMounts:
+    - name: shared-data
+      mountPath: /home/maic-player/workspace/dataset
+      readOnly: true
   ## @param singleuser.initContainers  Add additional init containers to the Single User pods
   ## Example:
   ## initContainers:
@@ -1625,12 +1636,12 @@ singleuser:
   ## @param singleuser.profileList  Define JupyterHub profiles
   # profileList: []
   profileList:
-    - display_name: "Profile 1"
-      description: "Longer description for profile 1."
+    - display_name: "Default Profile"
+      description: "3060Ti"
       default: true
       kubespawner_override:
         extra_resource_limits: 
-          nvidia.com/gpu: 2
+          nvidia.com/gpu: 1
     ## - display_name: "Profile 2"
     ##   description: "Longer description for profile 2."
     ##   kubespawner_override:
