@@ -1488,7 +1488,14 @@ singleuser:
   ## @param singleuser.extraEnvVars Extra environment variables that should be set for the user pods
   ## ref: https://zero-to-jupyterhub.readthedocs.io/en/latest/resources/reference.html#singleuser-extraenv
   ##
-  extraEnvVars: []
+  # extraEnvVars: []
+  extraEnvVars: 
+    - name: MLFLOW_TRACKING_URI
+      value: 'http://mlflow-tracking'
+    - name: MLFLOW_TRACKING_USERNAME
+      value: 'user'
+    - name: MLFLOW_TRACKING_PASSWORD
+      value: '0000'
   ## @param singleuser.containerPort Single User container port
   ##
   containerPort: 8888
