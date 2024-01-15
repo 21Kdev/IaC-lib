@@ -238,7 +238,7 @@ hub:
       profileList: {{- include "common.tplvalues.render" ( dict "value" .Values.singleuser.profileList "context" $) | nindent 4 }}
       {{- end }}
     cull:
-      enabled: true
+      enabled: false
       users: false
       removeNamedServers: false
       timeout: 3600
