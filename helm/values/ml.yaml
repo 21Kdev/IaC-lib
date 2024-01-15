@@ -419,7 +419,10 @@ tracking:
   ##   - name: FOO
   ##     value: "bar"
   ##
-  extraEnvVars: []
+  # extraEnvVars: []
+  extraEnvVars:
+    - name: GIT_PYTHON_REFRESH
+      value: "quiet"
   ## @param tracking.extraEnvVarsCM Name of existing ConfigMap containing extra env vars for mlflow nodes
   ##
   extraEnvVarsCM: ""
