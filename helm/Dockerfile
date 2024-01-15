@@ -5,7 +5,7 @@ USER root
 
 # Install necessary system packages
 RUN apt update && \
-    apt install -y wget vim bzip2 build-essential python3-dev
+    apt install -y wget vim bzip2 build-essential python3-dev libgl1-mesa-glx
 
 # Allow user 1001 to use sudo without a password
 # RUN echo 'user ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -17,6 +17,12 @@ RUN apt update && \
 
 # Continue with your previous installations as root
 WORKDIR /home/maic-player/workspace
+
+# matplotlib dir
+RUN mkdir -p /opt/matplotlib_cache && \
+    chmod -R 777 /opt/matplotlib_cache
+ENV MPLCONFIGDIR /opt/matplotlib_cache
+
 RUN export CONDA_ALWAYS_YES="true"
 RUN conda install -c conda-forge ipykernel
 ENV CONDA_PATH=/opt/bitnami/miniconda
@@ -25,13 +31,6 @@ ENV PATH=$CONDA_PATH/envs/$CONDA_ENV_NAME1/bin:$PATH
 
 RUN conda create -n $CONDA_ENV_NAME1 -c pytorch -c nvidia -c conda-forge -c defaults python=3.9.18
 # RUN echo "source activate $CONDA_ENV_NAME1" > ~/.bashrc
-
-RUN apt-get install -y libgl1-mesa-glx
-
-# matplotlib dir
-RUN mkdir -p /opt/matplotlib_cache && \
-    chmod -R 777 /opt/matplotlib_cache
-ENV MPLCONFIGDIR /opt/matplotlib_cache
 
 # Switch to user 1001 for any further actions
 USER 1001
