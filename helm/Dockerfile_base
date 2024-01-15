@@ -5,10 +5,15 @@ USER root
 
 # Install necessary system packages
 RUN apt update && \
-    apt install -y wget vim bzip2 build-essential python3-dev
+    apt install -y wget vim bzip2 build-essential python3-dev libgl1-mesa-glx
 
 # Continue with your previous installations as root
 WORKDIR /home/maic-player/workspace
+
+# matplotlib dir
+RUN mkdir -p /opt/matplotlib_cache && \
+    chmod -R 777 /opt/matplotlib_cache
+ENV MPLCONFIGDIR /opt/matplotlib_cache
 
 RUN export CONDA_ALWAYS_YES="true"
 RUN conda install -c conda-forge ipykernel

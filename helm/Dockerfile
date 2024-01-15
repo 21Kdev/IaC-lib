@@ -26,12 +26,20 @@ ENV PATH=$CONDA_PATH/envs/$CONDA_ENV_NAME1/bin:$PATH
 RUN conda create -n $CONDA_ENV_NAME1 -c pytorch -c nvidia -c conda-forge -c defaults python=3.9.18
 # RUN echo "source activate $CONDA_ENV_NAME1" > ~/.bashrc
 
+RUN apt-get install -y libgl1-mesa-glx
+
+# matplotlib dir
+RUN mkdir -p /opt/matplotlib_cache && \
+    chmod -R 777 /opt/matplotlib_cache
+ENV MPLCONFIGDIR /opt/matplotlib_cache
+
 # Switch to user 1001 for any further actions
 USER 1001
 
 # Continue with Python package installations
 COPY ./requirements.txt /tmp/$CONDA_ENV_NAME1_requirements.txt
 RUN $CONDA_PATH/envs/$CONDA_ENV_NAME1/bin/pip install numpy==1.23.5
+RUN $CONDA_PATH/envs/$CONDA_ENV_NAME1/bin/pip install mlflow
 RUN $CONDA_PATH/envs/$CONDA_ENV_NAME1/bin/pip install -r /tmp/$CONDA_ENV_NAME1_requirements.txt
 RUN python -m ipykernel install --user --name=$CONDA_ENV_NAME1 --display-name="$CONDA_ENV_NAME1"
 

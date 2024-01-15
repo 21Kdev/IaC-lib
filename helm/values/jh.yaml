@@ -194,7 +194,7 @@ hub:
       serviceAccountName: {{ template "jupyterhub.singleuserServiceAccountName" . }}
       storage:
         {{- if .Values.singleuser.persistence.enabled }}
-        type: dynamic
+        type: dynamic 
         {{- else }}
         type: none
         {{- end }}
