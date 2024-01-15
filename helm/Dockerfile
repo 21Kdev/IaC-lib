@@ -24,7 +24,7 @@ RUN mkdir -p /opt/matplotlib_cache && \
 ENV MPLCONFIGDIR /opt/matplotlib_cache
 
 RUN export CONDA_ALWAYS_YES="true"
-RUN conda install -c conda-forge ipykernel
+RUN conda install ipykernel
 ENV CONDA_PATH=/opt/bitnami/miniconda
 ENV CONDA_ENV_NAME1=torch-maic2023
 ENV PATH=$CONDA_PATH/envs/$CONDA_ENV_NAME1/bin:$PATH
