@@ -421,7 +421,8 @@ tracking:
   ##
   # extraEnvVars: []
   extraEnvVars:
-    GIT_PYTHON_REFRESH: "quiet"
+    - name: GIT_PYTHON_REFRESH
+      value: "quiet"
   ## @param tracking.extraEnvVarsCM Name of existing ConfigMap containing extra env vars for mlflow nodes
   ##
   extraEnvVarsCM: ""
