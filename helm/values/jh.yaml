@@ -1568,7 +1568,7 @@ singleuser:
   # extraVolumeMounts: []
   extraVolumeMounts:
     - name: shared-data
-      mountPath: /home/maic-player/workspace/dataset
+      mountPath: /workspace/dataset
       readOnly: true
   ## @param singleuser.initContainers  Add additional init containers to the Single User pods
   ## Example:
