@@ -3,9 +3,10 @@ FROM bitnami/jupyter-base-notebook:4.0.2-debian-11-r66
 USER root
 
 RUN apt update && \
-    apt install -y wget vim bzip2 build-essential python3-dev libgl1-mesa-glx
+    apt install -y build-essential python3-dev libgl1-mesa-glx libglib2.0-0 bash bash-completion procps less curl wget htop vim bzip2 && \
+    rm -rf /var/lib/apt/lists/*
 
-WORKDIR /home/maic-player/workspace
+WORKDIR /workspace
 
 # matplotlib dir
 RUN mkdir -p /opt/matplotlib_cache && \

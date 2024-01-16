@@ -1454,7 +1454,7 @@ singleuser:
   image:
     registry: docker.io
     repository: dodo133/jupyter-img
-    tag: torch-maic2023
+    tag: torch-maic2023-dev
     # repository: bitnami/jupyter-base-notebook
     # tag: 4.0.2-debian-11-r66
     digest: ""
@@ -1476,7 +1476,7 @@ singleuser:
   ## @param singleuser.notebookDir Notebook directory (it will be the same as the PVC volume mount)
   ##
   # notebookDir: /opt/bitnami/jupyterhub-singleuser
-  notebookDir: /home/maic-player/workspace
+  notebookDir: /workspace
   ## @param singleuser.allowPrivilegeEscalation Controls whether a process can gain more privileges than its parent process
   ##
   allowPrivilegeEscalation: false
@@ -1634,7 +1634,7 @@ singleuser:
       - ReadWriteOnce
     ## @param singleuser.persistence.size Persistent Volumes size
     ##
-    size: 150Gi
+    size: 300Gi
 
   ## @param singleuser.profileList  Define JupyterHub profiles
   # profileList: []
