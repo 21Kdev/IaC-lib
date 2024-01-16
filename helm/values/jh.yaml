@@ -1490,7 +1490,7 @@ singleuser:
   ##
   # extraEnvVars: []
   extraEnvVars: 
-    MLFLOW_TRACKING_URI: "http://mlflow-tracking"
+    MLFLOW_TRACKING_URI: "http://mlflow-tracking.mlflow.svc.cluster.local"
     MLFLOW_TRACKING_USERNAME: "user"
     MLFLOW_TRACKING_PASSWORD: "0000"
   ## @param singleuser.containerPort Single User container port
