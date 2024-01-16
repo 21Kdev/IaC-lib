@@ -125,7 +125,6 @@ hub:
               - {{ .Values.hub.adminUser }}
             whitelist:
               - "user1"
-              - "user2"
       cookieSecret:
       concurrentSpawnLimit: 64
       consecutiveFailureLimit: 5
@@ -1645,7 +1644,7 @@ singleuser:
       default: true
       kubespawner_override:
         extra_resource_limits: 
-          nvidia.com/gpu: 1
+          nvidia.com/gpu: 2
     ## - display_name: "Profile 2"
     ##   description: "Longer description for profile 2."
     ##   kubespawner_override:
