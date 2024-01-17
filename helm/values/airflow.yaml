@@ -208,7 +208,7 @@ web:
     debug: true
   ## @param web.baseUrl URL used to access to Airflow web ui
   ##
-  baseUrl: ""
+  baseUrl: "http://endnjs.iptime.org:32001"
   ## @param web.existingConfigmap Name of an existing config map containing the Airflow web config file
   ##
   existingConfigmap: ""
