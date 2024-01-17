@@ -138,8 +138,8 @@ dags:
 # extraEnvVars: []
 #!#!
 extraEnvVars:
-  AIRFLOW__WEBSERVER__DEFAULT_UI_TIMEZONE: "Asia/Seoul"
-  AIRFLOW__CORE__DEFAULT_TIMEZONE: "Asia/Seoul"
+  AIRFLOW__WEBSERVER__DEFAULT_UI_TIMEZONE: Asia/Seoul
+  AIRFLOW__CORE__DEFAULT_TIMEZONE: Asia/Seoul
 ## @param extraEnvVarsCM ConfigMap with extra environment variables for all the Airflow pods
 ##
 extraEnvVarsCM: ""
@@ -350,9 +350,9 @@ web:
   ## @param web.podLabels Add extra labels to the Airflow web pods
   ##
   #!#!
-  # podLabels: {}
-  podLabels:
-    hub.jupyter.org/network-access-singleuser: true
+  podLabels: {}
+  # podLabels:
+  #   hub.jupyter.org/network-access-singleuser: true
   ## @param web.podAnnotations Add extra annotations to the Airflow web pods
   ##
   podAnnotations: {}
