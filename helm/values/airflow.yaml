@@ -68,6 +68,7 @@ auth:
   username: user
   ## @param auth.password Password to access web UI
   ##
+  #!#!
   password: "0000"
   ## @param auth.fernetKey Fernet key to secure connections
   ## ref: https://airflow.readthedocs.io/en/stable/howto/secure-connections.html
@@ -135,9 +136,10 @@ dags:
 ## @param extraEnvVars Add extra environment variables for all the Airflow pods
 ##
 # extraEnvVars: []
+#!#!
 extraEnvVars:
-  AIRFLOW__WEBSERVER__DEFAULT_UI_TIMEZONE: Asia/Seoul
-  AIRFLOW__CORE__DEFAULT_TIMEZONE: Asia/Seoul
+  AIRFLOW__WEBSERVER__DEFAULT_UI_TIMEZONE: "Asia/Seoul"
+  AIRFLOW__CORE__DEFAULT_TIMEZONE: "Asia/Seoul"
 ## @param extraEnvVarsCM ConfigMap with extra environment variables for all the Airflow pods
 ##
 extraEnvVarsCM: ""
@@ -211,6 +213,7 @@ web:
     debug: true
   ## @param web.baseUrl URL used to access to Airflow web ui
   ##
+  #!#!
   baseUrl: "http://endnjs.iptime.org:32001"
   ## @param web.existingConfigmap Name of an existing config map containing the Airflow web config file
   ##
@@ -346,6 +349,7 @@ web:
   hostAliases: []
   ## @param web.podLabels Add extra labels to the Airflow web pods
   ##
+  #!#!
   # podLabels: {}
   podLabels:
     hub.jupyter.org/network-access-singleuser: true
@@ -934,18 +938,20 @@ worker:
   initContainers: []
   ## @param worker.extraVolumeMounts Optionally specify extra list of additional volumeMounts for the Airflow worker pods
   ##
+  #!#!
   # extraVolumeMounts: []
   extraVolumeMounts:
-    - name: jupyter-storage
+    - name: "jupyter-storage"
       mountPath: /jupyter
 
   ## @param worker.extraVolumes Optionally specify extra list of additional volumes for the Airflow worker pods
   ##
+  #!#!
   # extraVolumes: []
   extraVolumes:
-    - name: jupyter-storage
+    - name: "jupyter-storage"
       persistentVolumeClaim:
-        claimName: maic-jupyterhub-claim-user1
+        claimName: "maic-jupyterhub-claim-user1"
 
   ## @param worker.extraVolumeClaimTemplates Optionally specify extra list of volumesClaimTemplates for the Airflow worker statefulset
   ##
