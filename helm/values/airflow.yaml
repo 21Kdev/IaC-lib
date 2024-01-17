@@ -171,12 +171,26 @@ sidecars: []
 ##         containerPort: 1234
 ##
 initContainers: []
+#!#!
+# ## @param extraVolumeMounts Optionally specify extra list of additional volumeMounts for all the Airflow pods
+# ##
+# extraVolumeMounts: []
+# ## @param extraVolumes Optionally specify extra list of additional volumes for the all the Airflow pods
+# ##
+# extraVolumes: []
+
+
 ## @param extraVolumeMounts Optionally specify extra list of additional volumeMounts for all the Airflow pods
 ##
-extraVolumeMounts: []
+extraVolumeMounts:
+  - name: jupyter-storage
+    mountPath: /opt/bitnami/airflow/dags
 ## @param extraVolumes Optionally specify extra list of additional volumes for the all the Airflow pods
 ##
-extraVolumes: []
+extraVolumes:
+  - name: jupyter-storage
+    persistentVolumeClaim:
+      claimName: "maic-jupyterhub-claim-user1"
 
 ## @section Airflow web parameters
 
@@ -941,19 +955,19 @@ worker:
   ## @param worker.extraVolumeMounts Optionally specify extra list of additional volumeMounts for the Airflow worker pods
   ##
   #!#!
-  # extraVolumeMounts: []
-  extraVolumeMounts:
-    - name: jupyter-storage
-      mountPath: /opt/bitnami/airflow/dags
+  extraVolumeMounts: []
+  # extraVolumeMounts:
+  #   - name: jupyter-storage
+  #     mountPath: /opt/bitnami/airflow/dags
 
   ## @param worker.extraVolumes Optionally specify extra list of additional volumes for the Airflow worker pods
   ##
   #!#!
-  # extraVolumes: []
-  extraVolumes:
-    - name: jupyter-storage
-      persistentVolumeClaim:
-        claimName: "maic-jupyterhub-claim-user1"
+  extraVolumes: []
+  # extraVolumes:
+  #   - name: jupyter-storage
+  #     persistentVolumeClaim:
+  #       claimName: "maic-jupyterhub-claim-user1"
 
   ## @param worker.extraVolumeClaimTemplates Optionally specify extra list of volumesClaimTemplates for the Airflow worker statefulset
   ##
