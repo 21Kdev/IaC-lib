@@ -346,9 +346,9 @@ web:
   hostAliases: []
   ## @param web.podLabels Add extra labels to the Airflow web pods
   ##
-  # podLabels: {}
-  podLabels:
-    hub.jupyter.org/network-access-singleuser: true
+  podLabels: {}
+  # podLabels:
+  #   hub.jupyter.org/network-access-singleuser: true
   ## @param web.podAnnotations Add extra annotations to the Airflow web pods
   ##
   podAnnotations: {}
@@ -570,9 +570,9 @@ scheduler:
   hostAliases: []
   ## @param scheduler.podLabels Add extra labels to the Airflow scheduler pods
   ##
-  # podLabels: {}
-  podLabels:
-    hub.jupyter.org/network-access-singleuser: true
+  podLabels: {}
+  # podLabels:
+  #   hub.jupyter.org/network-access-singleuser: true
   ## @param scheduler.podAnnotations Add extra annotations to the Airflow scheduler pods
   ##
   podAnnotations: {}
@@ -842,9 +842,9 @@ worker:
   hostAliases: []
   ## @param worker.podLabels Add extra labels to the Airflow worker pods
   ##
-  # podLabels: {}
-  podLabels:
-    hub.jupyter.org/network-access-singleuser: true
+  podLabels: {}
+  # podLabels:
+  #   hub.jupyter.org/network-access-singleuser: true
   ## @param worker.podAnnotations Add extra annotations to the Airflow worker pods
   ##
   podAnnotations: {}
