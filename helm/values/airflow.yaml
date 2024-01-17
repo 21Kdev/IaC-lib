@@ -134,7 +134,10 @@ dags:
     pullSecrets: []
 ## @param extraEnvVars Add extra environment variables for all the Airflow pods
 ##
-extraEnvVars: []
+# extraEnvVars: []
+extraEnvVars:
+    AIRFLOW__WEBSERVER__DEFAULT_UI_TIMEZONE=Asia/Seoul
+    AIRFLOW__CORE__DEFAULT_TIMEZONE=Asia/Seoul
 ## @param extraEnvVarsCM ConfigMap with extra environment variables for all the Airflow pods
 ##
 extraEnvVarsCM: ""
