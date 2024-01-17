@@ -350,9 +350,9 @@ web:
   ## @param web.podLabels Add extra labels to the Airflow web pods
   ##
   #!#!
-  podLabels: {}
-  # podLabels:
-  #   hub.jupyter.org/network-access-singleuser: true
+  # podLabels: {}
+  podLabels:
+    hub.jupyter.org/network-access-singleuser: true
   ## @param web.podAnnotations Add extra annotations to the Airflow web pods
   ##
   podAnnotations: {}
@@ -939,19 +939,19 @@ worker:
   ## @param worker.extraVolumeMounts Optionally specify extra list of additional volumeMounts for the Airflow worker pods
   ##
   #!#!
-  extraVolumeMounts: []
-  # extraVolumeMounts:
-  #   - name: jupyter-storage
-  #     mountPath: /jupyter
+  # extraVolumeMounts: []
+  extraVolumeMounts:
+    - name: jupyter-storage
+      mountPath: /jupyter
 
   ## @param worker.extraVolumes Optionally specify extra list of additional volumes for the Airflow worker pods
   ##
   #!#!
-  extraVolumes: []
-  # extraVolumes:
-  #   - name: jupyter-storage
-  #     persistentVolumeClaim:
-  #       claimName: "maic-jupyterhub-claim-user1"
+  # extraVolumes: []
+  extraVolumes:
+    - name: jupyter-storage
+      persistentVolumeClaim:
+        claimName: "maic-jupyterhub-claim-user1"
 
   ## @param worker.extraVolumeClaimTemplates Optionally specify extra list of volumesClaimTemplates for the Airflow worker statefulset
   ##
