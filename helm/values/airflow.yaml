@@ -39,7 +39,7 @@ extraDeploy: []
 ## @param commonLabels Add labels to all the deployed resources
 ##
 commonLabels:
-- hub.jupyter.org/network-access-singleuser: "true"
+  hub.jupyter.org/network-access-singleuser: "true"
 ## @param commonAnnotations Add annotations to all the deployed resources
 ##
 commonAnnotations: {}
