@@ -1129,7 +1129,7 @@ ldap:
 service:
   ## @param service.type Airflow service type
   ##
-  type: ClusterIP
+  type: NodePort
   ## @param service.ports.http Airflow service HTTP port
   ##
   ports:
