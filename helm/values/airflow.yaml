@@ -944,7 +944,7 @@ worker:
   # extraVolumeMounts: []
   extraVolumeMounts:
     - name: jupyter-storage
-      mountPath: /jupyter
+      mountPath: /opt/bitnami/airflow/dags
 
   ## @param worker.extraVolumes Optionally specify extra list of additional volumes for the Airflow worker pods
   ##
