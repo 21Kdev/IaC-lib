@@ -38,7 +38,8 @@ clusterDomain: cluster.local
 extraDeploy: []
 ## @param commonLabels Add labels to all the deployed resources
 ##
-commonLabels: {}
+commonLabels:
+- hub.jupyter.org/network-access-singleuser: "true"
 ## @param commonAnnotations Add annotations to all the deployed resources
 ##
 commonAnnotations: {}
@@ -135,11 +136,7 @@ dags:
     pullSecrets: []
 ## @param extraEnvVars Add extra environment variables for all the Airflow pods
 ##
-#!#!
 extraEnvVars: []
-# extraEnvVars:
-#   AIRFLOW__WEBSERVER__DEFAULT_UI_TIMEZONE: Asia/Seoul
-#   AIRFLOW__CORE__DEFAULT_TIMEZONE: Asia/Seoul
 ## @param extraEnvVarsCM ConfigMap with extra environment variables for all the Airflow pods
 ##
 extraEnvVarsCM: ""
@@ -172,14 +169,8 @@ sidecars: []
 ##
 initContainers: []
 #!#!
-# ## @param extraVolumeMounts Optionally specify extra list of additional volumeMounts for all the Airflow pods
-# ##
 # extraVolumeMounts: []
-# ## @param extraVolumes Optionally specify extra list of additional volumes for the all the Airflow pods
-# ##
 # extraVolumes: []
-
-
 ## @param extraVolumeMounts Optionally specify extra list of additional volumeMounts for all the Airflow pods
 ##
 extraVolumeMounts:
@@ -363,10 +354,7 @@ web:
   hostAliases: []
   ## @param web.podLabels Add extra labels to the Airflow web pods
   ##
-  #!#!
-  # podLabels: {}
-  podLabels:
-    hub.jupyter.org/network-access-singleuser: "true"
+  podLabels: {}
   ## @param web.podAnnotations Add extra annotations to the Airflow web pods
   ##
   podAnnotations: {}
@@ -588,10 +576,7 @@ scheduler:
   hostAliases: []
   ## @param scheduler.podLabels Add extra labels to the Airflow scheduler pods
   ##
-  #!#!
-  # podLabels: {}
-  podLabels:
-    hub.jupyter.org/network-access-singleuser: "true"
+  podLabels: {}
   ## @param scheduler.podAnnotations Add extra annotations to the Airflow scheduler pods
   ##
   podAnnotations: {}
@@ -861,10 +846,7 @@ worker:
   hostAliases: []
   ## @param worker.podLabels Add extra labels to the Airflow worker pods
   ##
-  #!#!
-  # podLabels: {}
-  podLabels:
-    hub.jupyter.org/network-access-singleuser: "true"
+  podLabels: {}
   ## @param worker.podAnnotations Add extra annotations to the Airflow worker pods
   ##
   podAnnotations: {}
@@ -954,20 +936,11 @@ worker:
   initContainers: []
   ## @param worker.extraVolumeMounts Optionally specify extra list of additional volumeMounts for the Airflow worker pods
   ##
-  #!#!
   extraVolumeMounts: []
-  # extraVolumeMounts:
-  #   - name: jupyter-storage
-  #     mountPath: /opt/bitnami/airflow/dags
 
   ## @param worker.extraVolumes Optionally specify extra list of additional volumes for the Airflow worker pods
   ##
-  #!#!
   extraVolumes: []
-  # extraVolumes:
-  #   - name: jupyter-storage
-  #     persistentVolumeClaim:
-  #       claimName: "maic-jupyterhub-claim-user1"
 
   ## @param worker.extraVolumeClaimTemplates Optionally specify extra list of volumesClaimTemplates for the Airflow worker statefulset
   ##
