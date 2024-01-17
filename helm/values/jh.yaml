@@ -94,6 +94,7 @@ hub:
   adminUser: admin
   ## @param hub.password Hub Dummy authenticator password
   ##
+  #!#!
   password: "0000"
   ## Configuration file passed to the hub. This will be used by the jupyterhub_config.py file
   ## This configuration uses the values for the `singleuser` section. In the upstream chart the
@@ -1487,11 +1488,13 @@ singleuser:
   ## @param singleuser.extraEnvVars Extra environment variables that should be set for the user pods
   ## ref: https://zero-to-jupyterhub.readthedocs.io/en/latest/resources/reference.html#singleuser-extraenv
   ##
+  #!#!
   # extraEnvVars: []
   extraEnvVars: 
     MLFLOW_TRACKING_URI: "http://mlflow-tracking.mlflow.svc.cluster.local"
     MLFLOW_TRACKING_USERNAME: "user"
     MLFLOW_TRACKING_PASSWORD: "0000"
+    TZ: "Asia/Seoul"
   ## @param singleuser.containerPort Single User container port
   ##
   containerPort: 8888
