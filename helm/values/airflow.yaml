@@ -139,7 +139,7 @@ dags:
 #!#!
 # extraEnvVars: []
 extraEnvVars:
-  TZ: "Asia/Seoul"
+- TZ: "Asia/Seoul"
 ## @param extraEnvVarsCM ConfigMap with extra environment variables for all the Airflow pods
 ##
 extraEnvVarsCM: ""
