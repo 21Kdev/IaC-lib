@@ -136,7 +136,10 @@ dags:
     pullSecrets: []
 ## @param extraEnvVars Add extra environment variables for all the Airflow pods
 ##
-extraEnvVars: []
+#!#!
+# extraEnvVars: []
+extraEnvVars:
+  TZ: "Asia/Seoul"
 ## @param extraEnvVarsCM ConfigMap with extra environment variables for all the Airflow pods
 ##
 extraEnvVarsCM: ""
