@@ -475,16 +475,19 @@ scheduler:
   ## @param scheduler.image.pullSecrets Airflow Scheduler image pull secrets
   ## @param scheduler.image.debug Enable image debug mode
   ##
+  #!#!
   image:
     registry: docker.io
-    repository: bitnami/airflow-scheduler
-    tag: 2.8.0-debian-11-r1
+    # repository: bitnami/airflow-scheduler
+    # tag: 2.8.0-debian-11-r1
+    repository: dodo133/airflow-scheduler
+    tag: latest
     digest: ""
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
     ## ref: https://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
     ##
-    pullPolicy: IfNotPresent
+    pullPolicy: Always
     ## Optionally specify an array of imagePullSecrets.
     ## Secrets must be manually created in the namespace.
     ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/

@@ -1,4 +1,4 @@
-FROM bitnami/airflow:2.8.0-debian-11-r1
+FROM bitnami/airflow-scheduler:2.8.0-debian-11-r1
 
 USER root
 
