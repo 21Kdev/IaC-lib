@@ -202,10 +202,10 @@ web:
   #!#!
   image:
     registry: docker.io
-    repository: bitnami/airflow
-    tag: 2.8.0-debian-11-r1
-    # repository: dodo133/airflow
-    # tag: latest
+    # repository: bitnami/airflow
+    # tag: 2.8.0-debian-11-r1
+    repository: dodo133/airflow
+    tag: latest
     digest: ""
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -482,10 +482,10 @@ scheduler:
   #!#!
   image:
     registry: docker.io
-    repository: bitnami/airflow-scheduler
-    tag: 2.8.0-debian-11-r1
-    # repository: dodo133/airflow-scheduler
-    # tag: latest
+    # repository: bitnami/airflow-scheduler
+    # tag: 2.8.0-debian-11-r1
+    repository: dodo133/airflow-scheduler
+    tag: latest
     digest: ""
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
