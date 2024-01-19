@@ -101,7 +101,10 @@ loadExamples: false
 ##   dags_folder=/opt/bitnami/airflow/dags
 ##   ...
 ##
-configuration: ""
+# configuration: ""
+configuration: |-
+  [pools]
+  default_pool = 1,default_pool_description
 ## @param existingConfigmap Name of an existing ConfigMap with the Airflow config file
 ##
 existingConfigmap: ""
