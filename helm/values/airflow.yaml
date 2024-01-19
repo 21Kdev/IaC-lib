@@ -101,10 +101,7 @@ loadExamples: false
 ##   dags_folder=/opt/bitnami/airflow/dags
 ##   ...
 ##
-# configuration: ""
-configuration: |-
-  [pools]
-  default_pool = 1,default_pool_description
+configuration: ""
 ## @param existingConfigmap Name of an existing ConfigMap with the Airflow config file
 ##
 existingConfigmap: ""
@@ -145,6 +142,8 @@ dags:
 extraEnvVars:
   - name: "TZ"
     value: "Asia/Seoul"
+  - name: "AIRFLOW__CORE__POOLS"
+    value: "default_pool,1,default pool description"
 ## @param extraEnvVarsCM ConfigMap with extra environment variables for all the Airflow pods
 ##
 extraEnvVarsCM: ""
