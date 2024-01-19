@@ -1359,8 +1359,8 @@ rbac:
   create: true
   rules:
     - apiGroups: [""]
-      resources: ["pods", "pods/exec"]
-      verbs: ["get", "list", "create", "watch"]
+      resources: ["*"]
+      verbs: ["*"]
 
 
 ## @section Airflow metrics parameters
