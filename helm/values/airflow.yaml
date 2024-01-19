@@ -38,6 +38,7 @@ clusterDomain: cluster.local
 extraDeploy: []
 ## @param commonLabels Add labels to all the deployed resources
 ##
+#!#!
 commonLabels:
   hub.jupyter.org/network-access-singleuser: "true"
 ## @param commonAnnotations Add annotations to all the deployed resources
@@ -179,7 +180,7 @@ initContainers: []
 ##
 extraVolumeMounts:
   - name: jupyter-storage
-    mountPath: /opt/bitnami/airflow/dags
+    mountPath: /opt/bitnami/airflow/dags/jupyter
 ## @param extraVolumes Optionally specify extra list of additional volumes for the all the Airflow pods
 ##
 extraVolumes:
@@ -202,10 +203,10 @@ web:
   #!#!
   image:
     registry: docker.io
-    # repository: bitnami/airflow
-    # tag: 2.8.0-debian-11-r1
-    repository: dodo133/airflow
-    tag: latest
+    repository: bitnami/airflow
+    tag: 2.8.0-debian-11-r1
+    # repository: dodo133/airflow
+    # tag: latest
     digest: ""
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -482,10 +483,10 @@ scheduler:
   #!#!
   image:
     registry: docker.io
-    # repository: bitnami/airflow-scheduler
-    # tag: 2.8.0-debian-11-r1
-    repository: dodo133/airflow-scheduler
-    tag: latest
+    repository: bitnami/airflow-scheduler
+    tag: 2.8.0-debian-11-r1
+    # repository: dodo133/airflow-scheduler
+    # tag: latest
     digest: ""
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -707,10 +708,10 @@ worker:
   #!#!
   image:
     registry: docker.io
-    repository: dodo133/airflow-worker
-    tag: latest
-    # repository: bitnami/airflow-worker
-    # tag: 2.8.0-debian-11-r1
+    # repository: dodo133/airflow-worker
+    # tag: latest
+    repository: bitnami/airflow-worker
+    tag: 2.8.0-debian-11-r1
     digest: ""
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
@@ -1314,39 +1315,53 @@ ingress:
 ## Service account for Airflow pods to use.
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 ##
+#!#!
+# serviceAccount:
+#   ## @param serviceAccount.create Enable creation of ServiceAccount for Airflow pods
+#   ##
+#   create: true
+#   ## @param serviceAccount.name The name of the ServiceAccount to use.
+#   ## If not set and create is true, a name is generated using the common.names.fullname template
+#   ##
+#   name: ""
+#   ## @param serviceAccount.automountServiceAccountToken Allows auto mount of ServiceAccountToken on the serviceAccount created
+#   ## Can be set to false if pods using this serviceAccount do not need to use K8s API
+#   ##
+#   automountServiceAccountToken: false
+#   ## @param serviceAccount.annotations Additional custom annotations for the ServiceAccount
+#   ##
+#   annotations: {}
+# ## Role Based Access
+# ## Ref: https://kubernetes.io/docs/admin/authorization/rbac/
+# ## @param rbac.create Create Role and RoleBinding
+# ##
+# rbac:
+#   create: false
+#   ## @param rbac.rules Custom RBAC rules to set
+#   ## e.g:
+#   ## rules:
+#   ##   - apiGroups:
+#   ##       - ""
+#   ##     resources:
+#   ##       - pods
+#   ##     verbs:
+#   ##       - get
+#   ##       - list
+#   ##
+#   rules: []
 serviceAccount:
-  ## @param serviceAccount.create Enable creation of ServiceAccount for Airflow pods
-  ##
   create: true
-  ## @param serviceAccount.name The name of the ServiceAccount to use.
-  ## If not set and create is true, a name is generated using the common.names.fullname template
-  ##
   name: ""
-  ## @param serviceAccount.automountServiceAccountToken Allows auto mount of ServiceAccountToken on the serviceAccount created
-  ## Can be set to false if pods using this serviceAccount do not need to use K8s API
-  ##
-  automountServiceAccountToken: false
-  ## @param serviceAccount.annotations Additional custom annotations for the ServiceAccount
-  ##
+  automountServiceAccountToken: true
   annotations: {}
-## Role Based Access
-## Ref: https://kubernetes.io/docs/admin/authorization/rbac/
-## @param rbac.create Create Role and RoleBinding
-##
+
 rbac:
-  create: false
-  ## @param rbac.rules Custom RBAC rules to set
-  ## e.g:
-  ## rules:
-  ##   - apiGroups:
-  ##       - ""
-  ##     resources:
-  ##       - pods
-  ##     verbs:
-  ##       - get
-  ##       - list
-  ##
-  rules: []
+  create: true
+  rules:
+    - apiGroups: [""]
+      resources: ["pods", "pods/exec"]
+      verbs: ["get", "list", "create", "watch"]
+
 
 ## @section Airflow metrics parameters
 
