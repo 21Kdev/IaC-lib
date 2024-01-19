@@ -1316,51 +1316,51 @@ ingress:
 ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/
 ##
 #!#!
-# serviceAccount:
-#   ## @param serviceAccount.create Enable creation of ServiceAccount for Airflow pods
-#   ##
-#   create: true
-#   ## @param serviceAccount.name The name of the ServiceAccount to use.
-#   ## If not set and create is true, a name is generated using the common.names.fullname template
-#   ##
-#   name: ""
-#   ## @param serviceAccount.automountServiceAccountToken Allows auto mount of ServiceAccountToken on the serviceAccount created
-#   ## Can be set to false if pods using this serviceAccount do not need to use K8s API
-#   ##
-#   automountServiceAccountToken: false
-#   ## @param serviceAccount.annotations Additional custom annotations for the ServiceAccount
-#   ##
-#   annotations: {}
-# ## Role Based Access
-# ## Ref: https://kubernetes.io/docs/admin/authorization/rbac/
-# ## @param rbac.create Create Role and RoleBinding
-# ##
-# rbac:
-#   create: false
-#   ## @param rbac.rules Custom RBAC rules to set
-#   ## e.g:
-#   ## rules:
-#   ##   - apiGroups:
-#   ##       - ""
-#   ##     resources:
-#   ##       - pods
-#   ##     verbs:
-#   ##       - get
-#   ##       - list
-#   ##
-#   rules: []
 serviceAccount:
+  ## @param serviceAccount.create Enable creation of ServiceAccount for Airflow pods
+  ##
   create: true
+  ## @param serviceAccount.name The name of the ServiceAccount to use.
+  ## If not set and create is true, a name is generated using the common.names.fullname template
+  ##
   name: ""
-  automountServiceAccountToken: true
+  ## @param serviceAccount.automountServiceAccountToken Allows auto mount of ServiceAccountToken on the serviceAccount created
+  ## Can be set to false if pods using this serviceAccount do not need to use K8s API
+  ##
+  automountServiceAccountToken: True
+  ## @param serviceAccount.annotations Additional custom annotations for the ServiceAccount
+  ##
   annotations: {}
-
+## Role Based Access
+## Ref: https://kubernetes.io/docs/admin/authorization/rbac/
+## @param rbac.create Create Role and RoleBinding
+##
 rbac:
-  create: true
-  rules:
-    - apiGroups: ["*"]
-      resources: ["*"]
-      verbs: ["*"]
+  create: false
+  ## @param rbac.rules Custom RBAC rules to set
+  ## e.g:
+  ## rules:
+  ##   - apiGroups:
+  ##       - ""
+  ##     resources:
+  ##       - pods
+  ##     verbs:
+  ##       - get
+  ##       - list
+  ##
+  rules: []
+# serviceAccount:
+#   create: true
+#   name: ""
+#   automountServiceAccountToken: true
+#   annotations: {}
+
+# rbac:
+#   create: true
+#   rules:
+#     - apiGroups: ["*"]
+#       resources: ["*"]
+#       verbs: ["*"]
 
 
 ## @section Airflow metrics parameters

@@ -7,7 +7,7 @@ RUN mkdir -p /opt/bitnami/jupyterhub-singleuser/.cache/huggingface && \
     chmod -R 777 /opt/bitnami/jupyterhub-singleuser/.cache/huggingface
 ENV HF_HOME /opt/bitnami/jupyterhub-singleuser/.cache/huggingface
 
-RUN pip install papermill
+RUN pip install papermill jupyterlab-lsp 'python-lsp-server[all]'
 
 # RUN apt-get update && \
 #     apt-get install -y curl cron && \
