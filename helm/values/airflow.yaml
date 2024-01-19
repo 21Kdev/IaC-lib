@@ -142,8 +142,8 @@ dags:
 extraEnvVars:
   - name: "TZ"
     value: "Asia/Seoul"
-  # - name: "AIRFLOW__CORE__POOLS"
-  #   value: "default_pool,1,default pool description"
+  - name: "AIRFLOW__CORE__DEFAULT_POOL_SLOTS"
+    value: "1"
 ## @param extraEnvVarsCM ConfigMap with extra environment variables for all the Airflow pods
 ##
 extraEnvVarsCM: ""
