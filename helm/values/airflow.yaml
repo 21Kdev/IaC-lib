@@ -142,8 +142,8 @@ dags:
 extraEnvVars:
   - name: "TZ"
     value: "Asia/Seoul"
-  - name: "AIRFLOW__CORE__POOLS"
-    value: "default_pool,1,default pool description"
+  # - name: "AIRFLOW__CORE__POOLS"
+  #   value: "default_pool,1,default pool description"
 ## @param extraEnvVarsCM ConfigMap with extra environment variables for all the Airflow pods
 ##
 extraEnvVarsCM: ""
@@ -1338,7 +1338,7 @@ serviceAccount:
 ## @param rbac.create Create Role and RoleBinding
 ##
 rbac:
-  create: false
+  create: true
   ## @param rbac.rules Custom RBAC rules to set
   ## e.g:
   ## rules:
